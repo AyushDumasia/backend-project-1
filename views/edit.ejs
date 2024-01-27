@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/listing">Home</a></li>
+            <li><a href="/listing/new">Add Post</a></li>
+        </ul>
+    </nav>
+    <form action="/listing/<%= UpdateData._id %>?_method=PUT" method="post">
+        <div class="new-post">
+            <div class="new-box">
+                <label for="new-title">Title : </label>
+                <input value="<%= UpdateData.title %>" type="text" name="title" id="new-title" placeholder="Enter a Hotel Name">
+            </div>
+            <div class="new-box">
+                <label for="new-price">Price : </label>
+                <input value="<%= UpdateData.price %>" type="number" name="price" id="new-price" placeholder="Enter Price">
+            </div>
+            <div class="new-box">
+                <label for="new-dec">Descriptions : </label>
+                <input value="<%= UpdateData.description %>" type="text" name="description" id="new-dec" placeholder="Enter Any Description">
+            </div>
+            <div class="new-box">
+                <label for="new-loc">Location : </label>
+                <input value="<%= UpdateData.location %>" type="text" name="location" id="new-loc" placeholder="Enter Location">
+            </div>
+            <button class="sub-btn">Submit</button>
+        </div>
+    </form>    
+</body>
+</html>

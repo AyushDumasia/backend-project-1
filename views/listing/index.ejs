@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/listing">Home</a></li>
+            <li><a href="/listing/new">Add Post</a></li>
+        </ul>
+    </nav> 
+    <div class="main-container">
+        <%for(let allListing of allListings){%>
+            <div class="box">
+                <img src="<%= allListing.image.url %>" alt="" loading="lazy" class="card-img">
+                <h4 class="heading"> <a href="/listing/<%= allListing._id %>"><%= allListing.title %></a></h4>
+                <div class="inner-box">
+                    <h3>Location : <%= allListing.location %>,  <%= allListing.country %></h3>
+                    <h3><%= allListing.description %></h3>
+                </div>
+                <h5>Price : ₹<%= allListing.price.toLocaleString("en-IN") %> / night</h5>
+                <div class="btn-container">
+                    <form action="/listing/<%=allListing._id %>/edit" method="GET">
+                        <button class="in-btn">Update</button>
+                    </form>
+                    <form action="/listing/<%= allListing._id %>?_method=DELETE" method="post">
+                        <button class="in-btn">Delete Post</button>
+                    </form>
+                </div>
+            </div>
+        <%}%>
+        
+    </div>
+</body>
+</html>
+
+

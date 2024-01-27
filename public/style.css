@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans", sans-serif;
+}
+
+body{
+    background-color:  rgb(173, 203, 207);
+}
+
+nav{
+    padding: 1.5rem;
+    background-color:  rgb(173, 203, 207);
+    height: 1rem;
+    margin-bottom : 10px;
+    
+}
+
+nav ul{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    column-gap: 2rem;
+    list-style: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color: Black;
+}
+
+.main-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+    justify-content: space-evenly;
+}
+
+.heading a{
+    color: Black;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    max-width: 20%;
+    background-color: rgb(221 219 230);
+    border-radius: 15px;
+    height: auto;
+    max-height: 450px;
+    text-align: start;
+}
+.box h4,h5{
+    font-weight: 300;
+}
+
+.inner-box{
+    display: block;
+    /* margin: auto; */
+}
+.inner-box h3{
+    font-weight:200;
+    font-size: small;
+    margin-bottom: 5px;
+}
+
+.card-img{
+    border-radius : 15px;
+    display: block;
+    margin:5px auto;
+    width: 100%;
+    height: 50%;
+    background-clip: content-box;
+    background-size: cover;
+}
+
+.main-box{
+    display: block;
+    width: 70%;
+    margin: 15px  auto;
+    border-radius : 5px;
+    padding: 10px;
+}
+.main-box h1 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.main-box h3{
+    font-weight: 300;
+} 
+.main-box div{
+    width: 100%;
+    display: flex;
+    font-size: medium;
+    justify-content: space-between;
+}
+.main-box div .main-box-price{
+    font-weight: 500;
+    font-size: medium;
+}
+.main-box div h3{
+    font-size: medium;
+
+}
+.main-box img{
+    width: 50%;
+    border-radius : 5px;
+    /* height: 60%; */
+}
+
+.new-post {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 50%;
+    background-color: rgba(186, 184, 196, 0.512);
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.new-box{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly ;
+    height: 5rem;
+    border-radius: 5px;
+}
+.new-box input,textarea{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    height: 1.5rem;
+}
+
+.sub-btn{
+    margin: 10px auto;
+    width: 100%;
+    height: 2rem;
+}
+
+.btn-container{
+    margin: 10px auto;
+    /* display: flex; */
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.in-btn{
+    margin: 2px;
+    width: 100%;
+    border-radius: 10px;
+    border : none;
+    height: 2rem;
+}
