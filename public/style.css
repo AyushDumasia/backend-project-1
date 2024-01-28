@@ -9,17 +9,19 @@ body{
 }
 
 nav{
+    position: sticky;
+    top: 0;
     padding: 1.5rem;
-    background-color:  rgb(173, 203, 207);
+    background-color:  rgba(173, 203, 207, 0.718);
     height: 1rem;
     margin-bottom : 10px;
-    
+    align-items : center;
 }
 
 nav ul{
     display: flex;
-    justify-content: end;
-    align-items: center;
+    /* justify-content: end; */
+    /* align-items: center; */
     column-gap: 2rem;
     list-style: none;
 }
@@ -156,4 +158,19 @@ nav ul li a{
     border-radius: 10px;
     border : none;
     height: 2rem;
+}
+
+#search{
+    height: 2rem;
+    width: 40rem;
+    border-radius : 10px;
+    border : none;
+    padding: 1rem;
+}
+
+.search-btn{
+    height: 2rem;
+    width: 10rem;
+    border-radius : 10px;
+    border : none;
 }

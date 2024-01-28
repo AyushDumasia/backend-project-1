@@ -27,7 +27,7 @@ main()
     .catch(err => console.log(err));
 
 app.get("/",(req,res)=>{
-    res.send("Home Page");
+    res.redirect("/listing");
 })
 
 // app.get("/testing", async (req,res)=>{
@@ -45,8 +45,8 @@ app.get("/",(req,res)=>{
 
 
 app.get("/listing", async (req,res)=>{
-    let allListings = await Listing.find({});
-    res.render("listing/index.ejs", {allListings : allListings});
+        let allListings = await Listing.find({});
+        res.render("listing/index.ejs", {allListings : allListings});
 })
 
 app.get("/listing/new" ,(req,res)=>{
@@ -110,3 +110,41 @@ app.delete("/listing/:id", async (req,res)=>{
     await Listing.findByIdAndDelete(id);
     res.redirect("/listing");
 })
+
+app.get("/listing/search" , async (req,res)=>{
+    let match = {};
+    if(req.query.keyword){
+        match.title =  new RegExp(req.query.keyword , "i");
+    }
+    if (req.query.location || req.query.country) {
+        match.$and = [];
+
+        if (req.query.location) {
+            match.$and.push({ location: new RegExp(req.query.location, "i") });
+        }
+
+        if (req.query.country) {
+            match.$and.push({ country: new RegExp(req.query.country, "i") });
+        }
+    }
+    if(req.query.country){
+        match.country = new RegExp(req.query.country , "i");
+    }
+    const allListings = await Listing.aggregate([
+        { $match: match }
+    ]).exec();
+    res.render("listing/index.ejs", {allListings : allListings});
+})
+
+
+
+app.get("/listing/asc", async (req, res) => {
+    try {
+        console.log("Route hit");
+        const allListings = await  Listing.find().sort({ price: 1 });
+        res.json(allListings);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
