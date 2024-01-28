@@ -49,6 +49,32 @@ app.get("/listing", async (req,res)=>{
         res.render("listing/index.ejs", {allListings : allListings});
 })
 
+app.get("/listing/search" , async (req,res)=>{
+    let match = {};
+    if(req.query.keyword){
+        match.title =  new RegExp(req.query.keyword , "i");
+    }
+    if (req.query.location || req.query.country) {
+        match.$and = [];
+
+        if (req.query.location) {
+            match.$and.push({ location: new RegExp(req.query.location, "i") });
+        }
+
+        if (req.query.country) {
+            match.$and.push({ country: new RegExp(req.query.country, "i") });
+        }
+    }
+    if(req.query.country){
+        match.country = new RegExp(req.query.country , "i");
+    }
+    const allListings = await Listing.aggregate([
+        { $match: match }
+    ]).exec();
+    res.render("listing/index.ejs", {allListings : allListings});
+})
+
+
 app.get("/listing/new" ,(req,res)=>{
     // let {allData} = res.body;
     res.render("new.ejs");
@@ -110,32 +136,6 @@ app.delete("/listing/:id", async (req,res)=>{
     await Listing.findByIdAndDelete(id);
     res.redirect("/listing");
 })
-
-app.get("/listing/search" , async (req,res)=>{
-    let match = {};
-    if(req.query.keyword){
-        match.title =  new RegExp(req.query.keyword , "i");
-    }
-    if (req.query.location || req.query.country) {
-        match.$and = [];
-
-        if (req.query.location) {
-            match.$and.push({ location: new RegExp(req.query.location, "i") });
-        }
-
-        if (req.query.country) {
-            match.$and.push({ country: new RegExp(req.query.country, "i") });
-        }
-    }
-    if(req.query.country){
-        match.country = new RegExp(req.query.country , "i");
-    }
-    const allListings = await Listing.aggregate([
-        { $match: match }
-    ]).exec();
-    res.render("listing/index.ejs", {allListings : allListings});
-})
-
 
 
 app.get("/listing/asc", async (req, res) => {
