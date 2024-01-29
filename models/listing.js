@@ -10,12 +10,16 @@ const listingSchema = new Schema({
     image : {
         filename: "listingimage",
         type : Object, 
-        default : "https://images.unsplash.com/photo-1682685797365-41f45b562c0a?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        set : (v)=> v === "" ? "https://images.unsplash.com/photo-1682685797365-41f45b562c0a?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" : v
+        default : "https://unsplash.com/photos/brown-wooden-lounge-chairs-on-brown-wooden-dock-during-daytime-xEaAoizNFV8",
+        set : (v)=> v === "" ? "https://unsplash.com/photos/brown-wooden-lounge-chairs-on-brown-wooden-dock-during-daytime-xEaAoizNFV8" : v
     },   
     price : Number,
     location : String,
-    country : String
+    country : String,
+    saved : {
+        type : Boolean,
+        default  : false,
+    }
 });
 
 const Listing  = mongoose.model("Listing",listingSchema);

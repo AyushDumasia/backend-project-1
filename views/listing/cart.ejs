@@ -5,6 +5,7 @@
     <div class="main-container">
         <%for(let allListing of allListings){%>
             <div class="box">
+                <!-- <a href="/listing/<%= allListing._id %>"> -->
                     <img src="<%= allListing.image.url %>" alt="" loading="lazy" class="card-img">
                     <h4 class="heading overlay-text"> <a href="/listing/<%= allListing._id %>"><%= allListing.title %></a></h4>
                     <div class="inner-box">
@@ -19,13 +20,13 @@
                         <form action="/listing/<%= allListing._id %>?_method=DELETE" method="post">
                             <button class="in-btn">Delete Post</button>
                         </form>
-                        <!-- <p><%= allListing.saved%></p> -->
                         <form action="/listing/<%=allListing._id%>?_method=PATCH" method="POST">
                             <button class="add-cart in-btn">
-                                Save
+                                Remove From Cart
                             </button>
                         </form>
                     </div>
+                <!-- </a> -->
             </div>
         <%}%>
         

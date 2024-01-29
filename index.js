@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
-const path = require("path");
+const path = require('path');
 const mongoose = require('mongoose');
-const methodOverride = require("method-override");
+const ejsMate = require('ejs-mate');
+const methodOverride = require('method-override');
 const Listing = require('./models/listing.js');
 
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({urlencoded : true}));
 app.set("view engine" , "ejs");
+app.engine('ejs', ejsMate);
 app.set("views",path.join(__dirname , "views"));
 app.use(express.static(path.join(__dirname,"public")));
 
@@ -95,7 +97,7 @@ app.post("/listing" ,async (req,res) => {
         price : price,
         image : {
             filename: "listingimage",
-            url: "https://images.unsplash.com/photo-1682685797365-41f45b562c0a?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
         description : description,
         location : location
@@ -131,6 +133,8 @@ app.put("/listing/:id" , async (req,res)=>{
     res.redirect("/listing");
 })
 
+
+
 app.delete("/listing/:id", async (req,res)=>{
     let {id} = req.params;
     await Listing.findByIdAndDelete(id);
@@ -148,3 +152,14 @@ app.get("/listing/asc", async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+app.get("/listings/cart",async (req,res)=>{
+    const allListings = await Listing.find({saved : true});
+    res.render("listing/cart.ejs",{allListings});
+})
+
+app.patch("/listing/:id" , async (req,res)=>{
+    let {id } = req.params;
+    await Listing.findByIdAndUpdate({_id : id} , {$set : { saved : true}});    
+    res.redirect("/listing");
+})

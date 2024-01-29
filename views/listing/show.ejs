@@ -6,10 +6,10 @@
         <h1><%=listingData.title%></h1>
         <img src="<%= listingData.image.url %>" alt="" loading="lazy" class="main-box-img">
         <div>
-            <h3><%= listingData.description %></h3>
+            <h3>Description : <%= listingData.description %></h3>
             <h3 class="main-box-price">Price : ₹<%= listingData.price.toLocaleString("en-IN") %> / night</h3>
         </div>
-        <h3>Location :<%= listingData.location %> , <%= listingData.country %></h3>
+        <h3>Location : <%= listingData.location %> , <%= listingData.country %></h3>
     </div>
 </body>
 </html>
