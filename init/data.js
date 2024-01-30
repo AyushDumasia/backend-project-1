@@ -376,6 +376,102 @@ const sampleListings = [
         country: "Costa Rica",
         saved: false,
     },
+    {
+        title: "Riverside Cabin in Vancouver",
+        description: "Discover tranquility by the river in this cozy cabin located on the outskirts of vibrant Vancouver.",
+        image: {
+            filename: "riversideimage",
+            url: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        price: 1200,
+        location : "Vancouver",
+        country : "Canada",
+        saved : false
+    },
+    {
+        title: "Seaside Retreat in Victoria",
+        description: "Relax by the ocean at this seaside retreat in the charming city of Victoria, offering stunning sunset views.",
+        image: {
+            filename: "seasideimage",
+            url: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        price: 1800,
+        location : "Victoria",
+        country : "Canada",
+        saved : true
+    },
+    {
+        title: "Jungle Retreat in Manuel Antonio",
+        description: "Immerse yourself in nature with this jungle retreat near Manuel Antonio National Park. Discover exotic wildlife and lush surroundings.",
+        image: {
+            filename: "jungleimage",
+            url: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fGhvdGVsfGVufDB8fDB8fHww"
+        },
+        price: 1200,
+        location: "Manuel Antonio",
+        country: "Belize",
+        saved: true
+    },
+    {
+        title: "Tropical Villa in Tamarindo",
+        description: "Experience luxury in this tropical villa located in the vibrant beach town of Tamarindo. Enjoy private poolside relaxation and vibrant nightlife.",
+        image: {
+            filename: "villaimage",
+            url: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGhvdGVsfGVufDB8fDB8fHww"
+        },
+        price: 2500,
+        location: "Tamarindo",
+        country: "Costa Rica",
+        saved: false
+    },
+    {
+        title: "Oceanfront Bungalow in Jaco",
+        description: "Wake up to the sound of waves in this charming oceanfront bungalow in the laid-back town of Jaco. Perfect for surf enthusiasts.",
+        image: {
+            filename: "bungalowimage",
+            url: "https://images.unsplash.com/photo-1586611292717-f828b167408c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGhvdGVsfGVufDB8fDB8fHww"
+        },
+        price: 1600,
+        location: "Jaco",
+        country: "Panama",
+        saved: true
+    },
+    {
+        title: "Rainforest Retreat in Panama",
+        description: "Immerse yourself in the lush rainforest with this secluded retreat in Panama. Explore diverse wildlife and pristine natural surroundings.",
+        image: {
+            filename: "panamaretreatimage",
+            url: "https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fGhvdGVsfGVufDB8fDB8fHww"
+        },
+        price: 1200,
+        location: "Panama City",
+        country: "Panama",
+        saved: true
+    },
+    {
+        title: "Caribbean Villa in Belize",
+        description: "Experience luxury in this tropical villa located on the shores of the Caribbean Sea in Belize. Enjoy private poolside relaxation and stunning sea views.",
+        image: {
+            filename: "belizevillaimage",
+            url: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGhvdGVsfGVufDB8fDB8fHww"
+        },
+        price: 2500,
+        location: "San Pedro",
+        country: "Belize",
+        saved: false
+    },
+    {
+        title: "Beachfront Bungalow in Costa Rica",
+        description: "Wake up to the sound of waves in this charming beachfront bungalow in the serene town of Nosara. Perfect for beach lovers.",
+        image: {
+            filename: "costaricabungalowimage",
+            url: "https://images.unsplash.com/photo-1444201983204-c43cbd584d93?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        price: 1600,
+        location: "Nosara",
+        country: "Costa Rica",
+        saved: true
+    }
 ];
 
 module.exports = { data: sampleListings };
