@@ -14,23 +14,32 @@ body{
 
 .navbar{
     display: flex;
+    justify-content: start;
+    column-gap : 12rem;
     position: sticky;
     top: 0;
     padding: 1rem;
     background-color:  #c5e1e6;
     margin-bottom : 10px;
     align-items : center;
+    box-shadow :-1px 6px 127px black;
 }
-
 .fa-brands{
     font-size: 30px;
     margin-right: 10px;
+    align-self: center;
     color : #e41d58;
+}
+
+.left{
+    display: flex;
+    justify-self: start;
+    width: 20%;
+    /* background-color : rgb(117, 85, 85); */
 }
 
 .navbar ul{
     display: flex;
-    /* justify-content: end; */
     align-items: center;
     column-gap: 2rem;
     list-style: none;
@@ -187,7 +196,7 @@ body{
 
 .search-form{
     display: block;
-    margin-left: 224px;
+    /* margin-left: 224px; */
 }
 .input-container{
     background-color : rgb(255, 255, 255);
@@ -216,13 +225,53 @@ body{
     border-left: 1px solid grey;
 }
 
-/* .overlay-text {
+.dropdown {
+    position: relative;
+    display: inline-block;
+    transition: all 1s;
+}
+
+
+.dropdown a{
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 2px 6px;
+}
+
+.dropdown-content {
+    font-size: 15px;
+    display: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-} */
+    z-index: 1;
+    background-color: rgb(74, 74, 208);
+    border-radius: 5px;
+    border: none;
+    height: auto;
+}
+
+.nested-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: rgb(74, 74, 208);
+    border-radius: 5px;
+}
+
+.dropdown a{
+    margin: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.a-country:hover + .dropdown-content + .nested-dropdown {
+    display: block;
+}
+
+.sort-btn:hover {
+    background-color: #f1f1f1;
+    border-radius : 5px;
+}

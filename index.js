@@ -142,15 +142,14 @@ app.delete("/listing/:id", async (req,res)=>{
 })
 
 
-app.get("/listing/asc", async (req, res) => {
-    try {
-        console.log("Route hit");
-        const allListings = await  Listing.find().sort({ price: 1 });
-        res.json(allListings);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
+app.get("/listings/asc", async (req, res) => {
+    const allListings = await  Listing.find().sort({ price: 1 });
+    res.render("listing/index.ejs" , {allListings});
+});
+
+app.get("/listings/desc", async (req, res) => {
+    const allListings = await  Listing.find().sort({ price: -1 });
+    res.render("listing/index.ejs" , {allListings});
 });
 
 app.get("/listings/cart",async (req,res)=>{
@@ -162,4 +161,13 @@ app.patch("/listing/:id" , async (req,res)=>{
     let {id } = req.params;
     await Listing.findByIdAndUpdate({_id : id} , {$set : { saved : true}});    
     res.redirect("/listing");
+})
+
+
+
+app.patch("/listings/cart/:id" , async (req,res) =>{
+    let {id} = req.params;
+    let result = await Listing.findByIdAndUpdate({_id : id} , { $set : { saved : false}});
+    res.redirect("/listings/cart");
+    console.log(result);
 })

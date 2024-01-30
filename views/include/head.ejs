@@ -11,20 +11,37 @@
 </head>
 <body>
     <div class="navbar">
-        <i class="fa-brands fa-airbnb"></i>
-        <ul>
-            <li><a href="/listing">Home</a></li>
-            <li><a href="/listing/new">Add Post</a></li>
-            <li><a href="/listings/cart">Cart</a></li>
-        </ul>
-        <form action="/listing/search" method = "get" class="search-form">
-            <div class="input-container">
-                <input type="search" name="keyword" class="search" placeholder="Search Property" id="keyword">
-                <input type="search" name="location" class="search" placeholder="Search Location" id="location">
-                <input type="search" name="country" class="search" placeholder="Search country" id ="country">
-                <button class="search-btn" title="search"><i class="fa-solid fa-magnifying-glass" ></i></button>
+        <div class="left">
+            <i class="fa-brands fa-airbnb"></i>
+            <ul>
+                <li><a href="/listing">Home</a></li>
+                <li><a href="/listing/new">Add Post</a></li>
+                <li><a href="/listings/cart">Cart</a></li>
+            </ul>
+        </div>
+        <div class="mid">
+            <form action="/listing/search" method = "get" class="search-form">
+                <div class="input-container">
+                    <input type="search" name="keyword" class="search" placeholder="Search Property" id="keyword">
+                    <input type="search" name="location" class="search" placeholder="Search Location" id="location">
+                    <input type="search" name="country" class="search" placeholder="Search country" id ="country">
+                    <button class="search-btn" title="search"><i class="fa-solid fa-magnifying-glass" ></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="sort-by">Sort By <i class="fa-solid fa-caret-down"></i></a>
+            <div class="dropdown-content">
+                <a href="/listings/asc" class="sort-btn">Price: Low to High</a>
+                <a href="/listings/desc" class="sort-btn">Price: High to Low</a>
+                <a href="#" class="a-country">Country <i class="fa-solid fa-caret-down"></i></a>
+                <div class="nested-dropdown">
+                    <a href="/listing/search?country=United" class="sort-btn">United</a>
+                    <a href="/listing/search?country=India" class="sort-btn">India</a>
+                </div>
             </div>
-        </form>
+        </div>
+        
     </div> 
 </body>
 </html>

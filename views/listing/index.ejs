@@ -14,10 +14,10 @@
                     </div>
                     <div class="btn-container">
                         <form action="/listing/<%=allListing._id %>/edit" method="GET">
-                            <button class="in-btn">Update</button>
+                            <button class="in-btn up">Update</button>
                         </form>
                         <form action="/listing/<%= allListing._id %>?_method=DELETE" method="post">
-                            <button class="in-btn">Delete Post</button>
+                            <button class="in-btn del">Delete Post</button>
                         </form>
                         <!-- <p><%= allListing.saved%></p> -->
                         <form action="/listing/<%=allListing._id%>?_method=PATCH" method="POST">
