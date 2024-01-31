@@ -55,6 +55,8 @@ body {
 }
 
 .main-container {
+    min-height: 100vh;
+    max-height: auto;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -112,9 +114,9 @@ h5 {
 .main-box {
     display: block;
     width: 70%;
-    margin: 15px auto;
+    margin:  auto;
     border-radius: 5px;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .main-box h1 {
@@ -145,17 +147,16 @@ h5 {
 .main-box img {
     width: 60%;
     border-radius: 5px;
-    border: 2px solid black;
 }
 
 .new-post {
     display: flex;
     flex-direction: column;
-    margin: 20px auto;
+    margin: -20px auto;
     width: 50%;
-    /* background-color: rgba(186, 184, 196, 0.512); */
-    padding: 30px;
+    padding: 15px;
     border-radius: 5px;
+    height: 80vh;
 }
 
 .new-box {
@@ -167,11 +168,12 @@ h5 {
     border-radius: 5px;
 }
 
-.new-box input,
-textarea {
-    border: 1px solid black;
+.new-box input{
+    border: none;
     border-radius: 5px;
     padding: 5px;
+    /* background-color: rgba(248, 247, 255, 0.246); */
+    backdrop-filter : blur(10px);
     height: 1.5rem;
 }
 
@@ -182,6 +184,8 @@ textarea {
     height: 2.5rem;
     background-color: #e41d58;
     border: none;
+    border-radius: 5px;
+
 }
 
 .btn-container {
@@ -219,7 +223,6 @@ textarea {
     padding: 4px;
     border-radius: 2rem;
 }
-
 .search-btn {
     height: 2.5rem;
     width: 2.5rem;
@@ -254,41 +257,36 @@ textarea {
 }
 
 .dropdown-content {
+    display: flex;
+    align-items: end;
     font-size: 14px;
     display: none;
     position: absolute;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.295);
-    border-radius: 5px;
-    backdrop-filter: blur(10px);
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
     border: none;
     height: auto;
     width: 9rem;
 }
 
-.nested-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    background-color: rgba(255, 255, 255, 0.655);
-    border-radius: 5px;
-}
 
 .dropdown a {
     margin: 5px;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content, .a-country:hover .nested-dropdown {
     display: block;
 }
+.sort-btn{
 
-.a-country:hover+.nested-dropdown {
-    display: block;
+    height: 1.5rem;
 }
 
 .sort-btn:hover {
-    background-color: #f1f1f1;
-    border-radius: 5px;
+    border-radius: 20px;
+    background-color: #8f888891;
+    /* border-radius: 5px; */
 }
 
 footer {
@@ -364,4 +362,19 @@ footer {
     width: 40%;
     display: flex;
     justify-content: space-evenly;
+}
+
+
+.main-container-error{
+    margin-top: 50px;
+    font-size: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container-error span{
+    /* width: 22%; */
+    margin: auto;
+    border-bottom : 10px solid black;
 }

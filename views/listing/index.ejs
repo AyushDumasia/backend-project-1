@@ -22,16 +22,28 @@
                         <!-- <p><%= allListing.saved%></p> -->
                         <form action="/listing/<%=allListing._id%>?_method=PATCH" method="POST">
                             <button class="add-cart in-btn">
-                                Save
+                                Save</i>
                             </button>
                         </form>
                     </div>
             </div>
         <%}%>
     </div>
-<%- include("../include/footer.ejs") %>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let addCartButtons = document.querySelectorAll(".add-cart");
+    
+            addCartButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    let title = button.closest(".box").querySelector(".heading a").innerText;
+                    
+                    alert(`${title} Saved In Cart`);
+                });
+            });
+        });
+    </script>
+    
 
+<%- include("../include/footer.ejs") %>
 </body>
 </html>
-
-

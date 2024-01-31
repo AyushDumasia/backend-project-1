@@ -54,7 +54,7 @@ const sampleListings = [
     {
         title: "Secluded Treehouse Getaway",
         description:
-            "Live among the treetops in this unique treehouse retreat. A true nature lover's paradise.",
+            "Live among the treetops in this unique treehouse retreat. A false nature lover's paradise.",
         image: {
             filename: "listingimage",
             url: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGhvdGVsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
@@ -398,7 +398,7 @@ const sampleListings = [
         price: 1800,
         location : "Victoria",
         country : "Canada",
-        saved : true
+        saved : false
     },
     {
         title: "Jungle Retreat in Manuel Antonio",
@@ -410,7 +410,7 @@ const sampleListings = [
         price: 1200,
         location: "Manuel Antonio",
         country: "Belize",
-        saved: true
+        saved: false
     },
     {
         title: "Tropical Villa in Tamarindo",
@@ -434,7 +434,7 @@ const sampleListings = [
         price: 1600,
         location: "Jaco",
         country: "Panama",
-        saved: true
+        saved: false
     },
     {
         title: "Rainforest Retreat in Panama",
@@ -446,7 +446,7 @@ const sampleListings = [
         price: 1200,
         location: "Panama City",
         country: "Panama",
-        saved: true
+        saved: false
     },
     {
         title: "Caribbean Villa in Belize",
@@ -470,7 +470,7 @@ const sampleListings = [
         price: 1600,
         location: "Nosara",
         country: "Costa Rica",
-        saved: true
+        saved: false
     }
 ];
 
