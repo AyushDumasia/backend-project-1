@@ -5,11 +5,50 @@
     <div class="main-box">
         <h1><%=listingData.title%></h1>
         <img src="<%= listingData.image.url %>" alt="" loading="lazy" class="main-box-img">
+        <h2>Posted By : <%=listingData.username %></h2>
         <div>
             <h3>Description : <%= listingData.description %></h3>
             <h3 class="main-box-price">Price : ₹<%= listingData.price.toLocaleString("en-IN") %> / night</h3>
         </div>
         <h3>Location : <%= listingData.location %> , <%= listingData.country %></h3>
+    </div>
+    <br>
+    <br>
+
+    <hr>
+    <div class="review-input">
+        <h2>Leave a Comment</h2>
+        <form action="/listing/<%=listingData._id%>/reviews" method="POST">
+            <div class="review-box-input">
+                <label for="review-rating">Rating : (out of 5)</label>
+                <br>
+                <input type="number" name="review" id="review-rating" min="1" max="5">
+                <br>
+            </div>
+            <div  class="review-box-input">
+                <label for="review-comment">Post Comment :</label>
+                <br>
+                <textarea name="comment" id="review-comment" cols="50" rows="2" required></textarea>
+            </div>
+            <button class="sub-btn">Post Comment</button>
+        </form>
+    </div>
+    <hr>
+
+    <div class="review-main-container">
+        <h3>Top comments on this post  :</h3>
+        <div class="review-section">
+            <% for(review of listingData.reviews){ %>
+                <div class="review-box">
+                    <h4>Posted By :  <strong><%= review.username %></strong></h4>
+                    <p><%= review.comment %> , <%= review.review %> star</p>
+                    <p><%= review.createdAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></p>
+                    <form action="/listing/<%=listingData._id%>/reviews/<%= review._id%>?_method=DELETE" method="POST">
+                        <button>Delete Comment</button>
+                    </form>
+                </div>
+                <%} %>
+            </div>
     </div>
 <%- include("../include/footer.ejs") %>
 

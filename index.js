@@ -4,8 +4,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
-const Listing = require('./models/listing.js');
-const router = express.Router();
+const listings = require("./routes/listing.js")
+const reviews = require("./routes/review.js")
 
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ urlencoded: true }));
@@ -43,158 +43,22 @@ app.get("/", (req, res) => {
     res.redirect("/listing");
 })
 
-// app.get("/testing", async (req,res)=>{
-//     let sample = new Listing({
-//         title : "My Life",
-//         des : "I am .....",
-//         price : "120000000",
-//         loc : "India",
-//         country : "surat"
-//     });
-//     await sample.save();
-//     console.log(sample);
-//     res.render("index.ejs",{sample : sample});
-// })
-
-//Main Route
-app.get("/listing", async (req, res) => {
-    let allListings = await Listing.find({});
-    res.render("listing/index.ejs", { allListings: allListings });
-})
-
-
-//Search Route
-app.get("/listing/search", async (req, res) => {
-    let match = {};
-    if (req.query.keyword) {
-        match.title = new RegExp(req.query.keyword, "i");
-    }
-    if (req.query.location || req.query.country) {
-        match.$and = [];
-
-        if (req.query.location) {
-            match.$and.push({ location: new RegExp(req.query.location, "i") });
-        }
-
-        if (req.query.country) {
-            match.$and.push({ country: new RegExp(req.query.country, "i") });
-        }
-    }
-    if (req.query.country) {
-        match.country = new RegExp(req.query.country, "i");
-    }
-    const allListings = await Listing.aggregate([
-        { $match: match }
-    ]).exec();
-    res.render("listing/index.ejs", { allListings: allListings });
-})
-
-//New post Route
-app.get("/listing/new", (req, res) => {
-    // let {allData} = res.body;
-    res.render("new.ejs");
-})
-
-//Show Post Route
-app.get("/listing/:id", async (req, res) => {
-    let { id } = req.params;
-    const listingData = await Listing.findById(id);
-    // res.send("working");
-    res.render("listing/show.ejs", { listingData });
-})
-
-
-
-app.post("/listing", async (req, res) => {
-    let { title, price, description, location , country } = req.body;
-    let newPost = new Listing({
-        title: title,
-        price: price,
-        image: {
-            filename: "listingimage",
-            url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        },
-        description: description,
-        location: location,
-        country : country
-    })
-    console.log(newPost.title);
-    await newPost.save();
-    res.redirect("/listing");
-})
-
-//Edit Route
-app.get("/listing/:id/edit", async (req, res) => {
-    let { id } = req.params;
-    const UpdateData = await Listing.findById(id);
-    res.render("edit.ejs", { UpdateData });
-})
-
-app.put("/listing/:id", async (req, res) => {
-    let { id } = req.params;
-    let { title: title, price: price, description: description, location: location , country : country} = req.body;
-    let updateCard = await Listing.findByIdAndUpdate(
-        id,
-        {
-            title: title,
-            price: price,
-            description: description,
-            location: location,
-            country : country
-        },
-        {
-            runValidators: true,
-            new: true,
-        }
-    )
-    // console.log(updateCard);
-    res.redirect("/listing");
-})
-
-
-//Delete Route
-app.delete("/listing/:id", async (req, res) => {
-    let { id } = req.params;
-    await Listing.findByIdAndDelete(id);
-    res.redirect("/listing");
-})
-
-//For Ascending Route
-app.get("/listings/asc", async (req, res) => {
-    const allListings = await Listing.find().sort({ price: 1 });
-    res.render("listing/index.ejs", { allListings });
-});
-
-//For descending Route
-app.get("/listings/desc", async (req, res) => {
-    const allListings = await Listing.find().sort({ price: -1 });
-    res.render("listing/index.ejs", { allListings });
-});
-
-
-//For Cart Route
-app.get("/listings/cart", async (req, res) => {
-    const allListings = await Listing.find({ saved: true });
-    res.render("listing/cart.ejs", { allListings });
-})
-
-app.patch("/listing/:id", async (req, res) => {
-    let { id } = req.params;
-    await Listing.findByIdAndUpdate({ _id: id }, { $set: { saved: true } });
-    // alert("saver");
-    res.redirect("/listing");
-})
-
-
-//Remove From Cart
-app.patch("/listings/cart/:id", async (req, res) => {
-    let { id } = req.params;
-    let result = await Listing.findByIdAndUpdate({ _id: id }, { $set: { saved: false } });
-    res.redirect("/listings/cart");
-    // console.log(result);
-})
+app.use("/listing" , listings);
+app.use("/listing/:id/reviews" , reviews);
 
 
 app.get("*" , (req,res) =>{
     res.render("listing/error.ejs");
 })
+
+
+
+
+// app.use((err,req,res, next) =>{
+//     let {statusCode , message} = err;
+//     res.status(statusCode).res.send(message);
+// })
+
+// app.all("*" , (req , res , next) =>{
+//     next(new ExpressError(404 , "Page Not Found"));
+// })

@@ -14,7 +14,7 @@
                         <h5>Price : ₹<%= allListing.price.toLocaleString("en-IN") %> / night</h5>
                     </div>
                     <div class="btn-container">
-                        <form action="/listings/cart/<%=allListing._id%>?_method=PATCH" method="POST">
+                        <form action="/listing/cart/<%=allListing._id%>?_method=PATCH" method="POST">
                             <button class="add-cart in-btn">
                                 Remove From Cart
                             </button>

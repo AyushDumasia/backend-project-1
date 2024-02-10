@@ -5,24 +5,34 @@
     <form action="/listing" method="POST">
         <div class="new-post">
             <div class="new-box">
+                <label for="new-username">Name :  </label>
+                <input type="text" name="username" id="new-username" placeholder="Enter a name" required>
+            </div>
+            <div class="new-box">
                 <label for="new-title">Title : </label>
-                <input type="text" name="title" id="new-title" placeholder="Enter a Hotel Name">
+                <input type="text" name="title" id="new-title" placeholder="Enter a Hotel Name" required>
             </div>
             <div class="new-box">
                 <label for="new-price">Price : </label>
-                <input type="number" name="price" id="new-price" placeholder="Enter Price" value="5000">
+                <input type="number" name="price" id="new-price" placeholder="Enter Price" required>
+            </div>
+            <div class="new-box">
+                <label for="new-image">Image :  </label>
+                <input type="text" name="image" id="new-image" placeholder="Enter URL" required>
             </div>
             <div class="new-box">
                 <label for="new-dec">Descriptions : </label>
-                <input type="text" name="description" id="new-dec" placeholder="Enter Any Description">
+                <input type="text" name="description" id="new-dec" placeholder="Enter Any Description" required>
             </div>
-            <div class="new-box">
-                <label for="new-loc">Location : </label>
-                <input type="text" name="location" id="new-loc" placeholder="Enter Location">
-            </div>
-            <div class="new-box">
-                <label for="new-con">Country : </label>
-                <input type="text" name="country" id="new-con" placeholder="Enter Country">
+            <div class="location-box">
+                <div class="new-box loc">
+                    <label for="new-loc">Location : </label>
+                    <input type="text" name="location" id="new-loc" placeholder="Enter Location" required>
+                </div>
+                <div class="new-box con">
+                    <label for="new-con">Country : </label>
+                    <input type="text" name="country" id="new-con" placeholder="Enter Country" required>
+                </div>
             </div>
                 <button class="sub-btn">Submit</button>
             </form>
