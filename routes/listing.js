@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Listing = require('../models/listing.js');
+const cookieParser = require('cookie-parser')
 const {listingSchema , reviewSchema} = require('../schema.js');
+
+router.use(cookieParser());
 
 //New post Route
 router.get("/new", (req, res) => {
@@ -12,14 +15,22 @@ router.get("/new", (req, res) => {
 
 //For Cart Route
 router.get("/cart", async (req, res) => {
-    const allListings = await Listing.find({ saved: true });
-    res.render("listing/cart.ejs", { allListings });
+    const nonSavedListings = await Listing.find({ saved: true });
+    if(nonSavedListings.length === 0){
+        res.render("listing/empty.ejs");
+    }
+    else{
+        const allListings = await Listing.find({ saved: true });
+        res.render("listing/cart.ejs", { allListings });
+    }
 })
 
 //Main Route
 router.get("/", async (req, res) => {
     let allListings = await Listing.find({});
+    res.cookie("name " , "cokkie");
     res.render("listing/index.ejs", { allListings: allListings });
+    console.dir(req.cookies);
 })
 
 
@@ -55,27 +66,34 @@ router.patch("/cart/:id", async (req, res) => {
 //Search Route
 router.get("/search", async (req, res) => {
     let match = {};
-    if (req.query.keyword) {
-        match.title = new RegExp(req.query.keyword, "i");
-    }
-    if (req.query.location || req.query.country) {
-        match.$and = [];
-
-        if (req.query.location) {
-            match.$and.push({ location: new RegExp(req.query.location, "i") });
+        if (req.query.keyword) {
+            match.title = new RegExp(req.query.keyword, "i");
         }
+        if (req.query.location || req.query.country) {
+            match.$and = [];
 
+            if (req.query.location) {
+                match.$and.push({ location: new RegExp(req.query.location, "i") });
+            }
+
+            if (req.query.country) {
+                match.$and.push({ country: new RegExp(req.query.country, "i") });
+            }
+        }
         if (req.query.country) {
-            match.$and.push({ country: new RegExp(req.query.country, "i") });
+            match.country = new RegExp(req.query.country, "i");
         }
-    }
-    if (req.query.country) {
-        match.country = new RegExp(req.query.country, "i");
-    }
-    const allListings = await Listing.aggregate([
-        { $match: match }
-    ]).exec();
-    res.render("listing/index.ejs", { allListings: allListings });
+        const allListings = await Listing.aggregate([
+            { $match: match }
+        ]).exec();
+        console.log(allListings);
+        if(allListings.length === 0){
+            res.render("listing/emptySearch.ejs");
+        }
+        else{
+            res.render("listing/index.ejs", { allListings: allListings });
+        }
+
 })
 
 

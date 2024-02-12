@@ -154,7 +154,7 @@ h5 {
     flex-direction: column;
     margin: -20px auto;
     width: 50%;
-    padding: 15px;
+    /* padding: 15px;s */
     border-radius: 5px;
     height: 80vh;
 }
@@ -186,7 +186,7 @@ h5 {
 
 .sub-btn {
     color: white;
-    margin: 10px auto;
+    margin: 0px auto;
     width: 100%;
     height: 2.5rem;
     background-color: #e41d58;

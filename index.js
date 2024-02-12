@@ -22,9 +22,9 @@ app.listen(8080, () => {
 //Logger
 app.use((req,res,next) =>{
     req.time = new Date( Date.now() ).toString();
-    if (req.path !== "/favicon.ico") {
-        console.log(req.method, req.hostname, req.path , req.time);
-    }
+    console.log(req.method, req.hostname, req.path , req.time);
+    // if (req.path !== "/favicon.ico") {
+    // }
     next();
 })
 
