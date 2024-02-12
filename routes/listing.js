@@ -6,6 +6,13 @@ const {listingSchema , reviewSchema} = require('../schema.js');
 
 router.use(cookieParser());
 
+// async function getCounts(){
+//     return await Listing.countDocuments({saved : true});
+// }
+
+// let counts = getCounts();
+
+
 //New post Route
 router.get("/new", async (req, res) => {
     let counts = await Listing.countDocuments({saved : true});

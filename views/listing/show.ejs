@@ -41,7 +41,7 @@
             <% for(review of listingData.reviews){ %>
                 <div class="review-box">
                     <h4>Posted By :  <strong><%= review.username %></strong></h4>
-                    <p><%= review.comment %> , <%= review.review %> star</p>
+                    <p><%= review.comment %> , <%= review.review %>  <i class="fa-solid fa-star"></i></p>
                     <p><%= review.createdAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></p>
                     <form action="/listing/<%=listingData._id%>/reviews/<%= review._id%>?_method=DELETE" method="POST">
                         <button>Delete Comment</button>
