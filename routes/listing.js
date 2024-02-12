@@ -7,9 +7,10 @@ const {listingSchema , reviewSchema} = require('../schema.js');
 router.use(cookieParser());
 
 //New post Route
-router.get("/new", (req, res) => {
+router.get("/new", async (req, res) => {
+    let counts = await Listing.countDocuments({saved : true});
     // let {allData} = res.body;
-    res.render("new.ejs");
+    res.render("new.ejs" , {counts});
 })
 
 
@@ -61,9 +62,9 @@ router.patch("/:id", async (req, res) => {
 //Remove From Cart
 router.patch("/cart/:id", async (req, res) => {
     let { id } = req.params;
+    let result = await Listing.findByIdAndUpdate({ _id: id }, { $set: { saved: false } });
     let counts = await Listing.countDocuments({saved : true});
     const nonSavedListings = await Listing.find({ saved: true });
-    let result = await Listing.findByIdAndUpdate({ _id: id }, { $set: { saved: false } });
     if(nonSavedListings.length === 0){
         res.render("listing/empty.ejs" , {counts});
     }
@@ -143,7 +144,7 @@ router.get("/:id", async (req, res) => {
 })
 
 
-5
+
 //Edit Route
 router.get("/:id/edit", async (req, res) => {
     let counts = await Listing.countDocuments({saved : true});

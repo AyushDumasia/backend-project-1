@@ -448,8 +448,5 @@ footer {
 }
 
 sup{
-    /* height: 40px; */
-    /* width: 20px; */
-    /* border-radius : 50%; */
-    /* background-color: #e41d58; */
+    margin: 2px;
 }
