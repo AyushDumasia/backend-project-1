@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
+    /* overflow-x: hidden;s */
 }
 
 button {
@@ -61,7 +62,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     row-gap: 2rem;
-    justify-content: space-evenly;
+    justify-content: center;
+    /* padding-left: 30px; */
 }
 
 .heading a {
@@ -443,4 +445,11 @@ footer {
     background-color: #e41d58;
     color : white;
     padding: 5px;
+}
+
+sup{
+    /* height: 40px; */
+    /* width: 20px; */
+    /* border-radius : 50%; */
+    /* background-color: #e41d58; */
 }
