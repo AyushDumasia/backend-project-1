@@ -13,6 +13,27 @@ router.use(cookieParser());
 // let counts = getCounts();
 
 
+router.get("/page-:page", async (req, res) => {
+    let counts = await Listing.countDocuments({saved : true});
+    // let allListings = await Listing.find({});
+    
+    try {
+        const page = parseInt(req.params.page);
+        const limit = 8;
+        const skip = (page - 1) * limit; // Adjusted to start pages from 1
+
+        const listings = await Listing.find({})
+            .skip(skip)
+            .limit(limit)
+            .exec();
+            res.render("listing/index.ejs", { allListings: listings , counts : counts });
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
+
+
 //New post Route
 router.get("/new", async (req, res) => {
     let counts = await Listing.countDocuments({saved : true});

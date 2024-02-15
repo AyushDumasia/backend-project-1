@@ -450,3 +450,21 @@ footer {
 sup{
     margin: 2px;
 }
+
+
+.pagination{
+    /* background-color : black; */
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    margin: auto;
+}
+
+.pagination a{
+    border-radius : 3px;
+    padding-left: 10px;
+    background-color : blue;
+    width: 20px;
+    color: rgb(255, 245, 245);
+    text-decoration: none;
+}

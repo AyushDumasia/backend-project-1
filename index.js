@@ -61,7 +61,7 @@ main()
     .catch(err => console.log(err));
 
 app.get("/", (req, res) => {
-    res.redirect("/listing");
+    res.redirect("/listing/page-1");
 })
 
 app.use("/listing" , listingRouter);
