@@ -38,7 +38,7 @@ router.get("/cart", async (req, res) => {
 router.get("/", async (req, res) => {
     let counts = await Listing.countDocuments({saved : true});
     let allListings = await Listing.find({});
-    console.log(counts);
+    // console.log(counts);
     res.render("listing/index.ejs", { allListings: allListings , counts : counts });
 })
 
