@@ -468,3 +468,17 @@ sup{
     color: rgb(255, 245, 245);
     text-decoration: none;
 }
+
+.flash-message{
+    background-color : #172f54;
+    color : rgb(225, 225, 225);
+    text-align: center;
+    border : none;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    height: 2.5rem;
+    border-radius: 5px;
+}

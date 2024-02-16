@@ -38,7 +38,14 @@ router.get("/page-:page", async (req, res) => {
 router.get("/new", async (req, res) => {
     let counts = await Listing.countDocuments({saved : true});
     // let {allData} = res.body;
-    res.render("new.ejs" , {counts});
+    if(!req.isAuthenticated()){
+        req.flash("success" , "You must be logged in");
+        return res.redirect("/log-in");
+    }
+    else{
+        res.render("new.ejs" , {counts});
+    }
+
 })
 
 
@@ -84,6 +91,7 @@ router.patch("/:id", async (req, res) => {
     await Listing.findByIdAndUpdate({ _id: id }, { $set: { saved: true } });
     let counts = await Listing.countDocuments({saved : true});
     // alert("saver");
+    req.flash("success" , "Add successfully in cart");
     res.redirect("/listing");
 })
 
@@ -158,6 +166,7 @@ router.post("/", async (req ,res , next) =>{
         })
         console.log(newPost);
         await newPost.save();
+        req.flash("success" , "New Post Created");
         res.redirect("/listing");
 });
 

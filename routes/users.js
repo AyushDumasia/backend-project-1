@@ -14,6 +14,7 @@ router.post("/sign-up" , async(req,res)=>{
         const newUser = new User({email,username});
         let result = await User.register(newUser , password);
         console.log(result);
+        req.flash("success" , "Login Successful");
         res.redirect("/listing");
     }
     catch(err){
@@ -28,6 +29,7 @@ router.get("/log-in" , (req,res)=>{
 
 router.post("/log-in" ,passport.authenticate("local" , {failureRedirect : '/log-in'}) ,  async (req,res)=>{
     try{
+        req.flash("success" , "Log In Successfully");
         res.redirect("/listing");
     }
     catch{

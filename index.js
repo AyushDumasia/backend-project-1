@@ -9,6 +9,7 @@ const reviewRouter = require('./routes/review.js')
 const userRouter = require('./routes/users.js')
 const Listing = require('./models/listing.js');
 const session = require('express-session');
+const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user.js')
@@ -31,6 +32,12 @@ const sessionOptions = {
 }
 
 app.use(session(sessionOptions));
+app.use(flash());
+
+app.use((req,res,next)=>{
+    res.locals.success = req.flash("success");
+    next();
+})
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -61,7 +68,7 @@ main()
     .catch(err => console.log(err));
 
 app.get("/", (req, res) => {
-    res.redirect("/listing/page-1");
+    res.redirect("/log-in");
 })
 
 app.use("/listing" , listingRouter);
